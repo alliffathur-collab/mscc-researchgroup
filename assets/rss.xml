@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>MSCC Research Group — News</title>
+    <link>/</link>
+    <description>Latest news from the MSCC Research Group</description>
+    <lastBuildDate>Thu, 22 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>New grant awarded for computational materials design</title>
+      <link>#</link>
+      <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+      <description>MSCC has been awarded funding to develop machine-learning-enhanced DFT workflows for battery materials.</description>
+    </item>
+    <item>
+      <title>New paper: SERS quantification of antibiotics</title>
+      <link>#</link>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      <description>A collaborative paper describing SERS methods for trace-level quantification was accepted in Journal of Materials Chemistry B.</description>
+    </item>
+  </channel>
+</rss>

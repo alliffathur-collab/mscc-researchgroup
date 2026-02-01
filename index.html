@@ -23,8 +23,9 @@
     <header class="site-header" id="mainHeader">
       <div class="container header-row">
         <a class="brand" href="#home" aria-label="MSCC Research Group Home">
-          <span class="brand__mark" aria-hidden="true"></span>
+          <img class="brand__logo" src="assets/image/Logo.jpeg" alt="MSCC logo">
           <span class="brand__title">MSCC Research Group</span>
+          <img class="brand__kfupm" src="assets/image/Logokfupm.svg" alt="KFUPM logo">
         </a>
 
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
@@ -43,31 +44,117 @@
             <li><a href="#contact" id="nav-contact">CONTACT</a></li>
           </ul>
         </nav>
+        <button id="themeToggle" class="btn-icon theme-toggle" aria-pressed="false" aria-label="Toggle light/dark">🌗</button>
       </div>
     </header>
 
     <main id="content">
       <div class="container">
         <section id="home" class="hero">
-          <div class="hero-banner" role="img" aria-label="MSCC Research Group"></div>
+          <div class="slider" aria-hidden="false">
+            <ul>
+              <li class="active">
+                <img src="assets/hero/hero1.jpg" alt="MSCC hero 1" loading="lazy">
+                <div class="hero-overlay" aria-hidden="false">
+                  <div class="hero-overlay__inner">
+                    <h1 class="hero-title">Molecular Spectroscopy &amp; Computational Chemistry</h1>
+                    <p class="hero-subtitle">Theory-guided design, spectroscopy-driven validation, energy &amp; catalysis impact.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero2.jpg" alt="MSCC hero 2" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">DFT-driven materials discovery</h2>
+                    <p class="hero-subtitle">Predicting stable structures and functional properties.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero3.jpg" alt="MSCC hero 3" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">Designing catalysts for energy applications</h2>
+                    <p class="hero-subtitle">Linking structure to reactivity for better catalysts.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero4.jpg" alt="MSCC hero 4" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">High‑sensitivity SERS and vibrational analysis</h2>
+                    <p class="hero-subtitle">Detecting molecules at ultra-low concentrations.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero5.jpg" alt="MSCC hero 5" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">Bridging experiments and computation</h2>
+                    <p class="hero-subtitle">Combining spectroscopy with first-principles modeling.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero6.jpg" alt="MSCC hero 6" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">Theory-guided spectroscopy for materials</h2>
+                    <p class="hero-subtitle">Interpreting spectra with reliable theoretical models.</p>
+                    
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero7.jpg" alt="MSCC hero 7" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">From molecules to devices: energy solutions</h2>
+                    <p class="hero-subtitle">Translating molecular insights into functional devices.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <img src="assets/hero/hero8.jpg" alt="MSCC hero 8" loading="lazy">
+                <div class="hero-overlay" aria-hidden="true">
+                  <div class="hero-overlay__inner">
+                    <h2 class="hero-title">Next-generation materials &amp; spectroscopy</h2>
+                    <p class="hero-subtitle">Exploring new frontiers in materials for energy and sensing.</p>
+                    
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section class="cards" aria-label="Highlights">
           <article class="card">
             <h3>Research</h3>
             <p class="lead">Evidence-driven exploration</p>
-            <p class="sub">We investigate emerging topics and publish clear, reproducible results.</p>
           </article>
           <article class="card">
             <h3>Innovation</h3>
             <p class="lead">From ideas to prototypes</p>
-            <p class="sub">We build practical demos and test them with real constraints.</p>
           </article>
           <article class="card">
             <h3>Impact</h3>
             <p class="lead">Collaboration that matters</p>
-            <p class="sub">We partner with academia and industry to deliver measurable outcomes.</p>
-          </article>
         </section>
 
         <section id="about" class="section about-section">
@@ -78,7 +165,7 @@
                 The Molecular Spectroscopy & Computational Chemistry (MSCC) group led by Prof. Abdulaziz A. Al-Saadi focuses on the rational design and fundamental understanding of new materials through an integrated combination of computational chemistry and molecular spectroscopy.
               </p>
               <p>
-                Short introduction (≤ 30 words): We design energy materials and catalysts using computational chemistry and molecular spectroscopy, linking structure to function through theory-guided modeling and vibrational spectroscopies.
+                We design energy materials and catalysts using computational chemistry and molecular spectroscopy, linking structure to function through theory-guided modeling and vibrational spectroscopies.
               </p>
               <div class="cta-row">
                 <a class="btn-primary" href="#research">Explore research themes</a>
@@ -117,19 +204,23 @@
           <div class="content-grid">
             <div class="content-card">
               <h3>Research areas</h3>
-              <ul class="bullets">
-                <li>Molecular infrared and Raman spectroscopies</li>
-                <li>Computational chemistry</li>
-                <li>In-silico materials design for energy and catalysis</li>
-              </ul>
-            </div>
-            <div class="content-card">
-              <h3>Education</h3>
-              <ul class="bullets">
-                <li>PhD: Texas A&amp;M University, 2006</li>
-                <li>MSc: King Fahd University of Petroleum &amp; Minerals (KFUPM), 2000</li>
-                <li>BSc: King Fahd University of Petroleum &amp; Minerals (KFUPM), 1996</li>
-              </ul>
+
+              <div class="research-cards">
+                <article class="research-mini-card">
+                  <h4>Molecular IR &amp; Raman</h4>
+                  <p>Decoding molecular fingerprints to reveal structure, bonding, and interactions, bridging spectra with theory.</p>
+                </article>
+
+                <article class="research-mini-card">
+                  <h4>Computational Chemistry</h4>
+                  <p>DFT-driven insights into stability, reactivity, and charge transfer, built for reproducible, explainable results.</p>
+                </article>
+
+                <article class="research-mini-card">
+                  <h4>In-silico Materials Design</h4>
+                  <p>Designing next-gen energy materials and catalysts by linking structure → properties → performance.</p>
+                </article>
+              </div>
             </div>
           </div>
 
@@ -151,10 +242,18 @@
         </section>
 
         <section id="publications" class="section">
-          <h2 class="section-title">PUBLICATIONS</h2>
+          <h2 class="section-title">Selected publications — most recent (10)</h2>
           <div class="doc">
             <h3>Most recent (10)</h3>
-            <ol class="pubs">
+
+            <div class="pub-filters" role="toolbar" aria-label="Filter publications">
+              <button class="filter-chip" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter-chip" data-filter="molecular" aria-pressed="false">Molecular Spectroscopy</button>
+              <button class="filter-chip" data-filter="computational" aria-pressed="false">Computational Chemistry</button>
+              <button class="filter-chip" data-filter="materials" aria-pressed="false">In-silico Material Design</button>
+            </div>
+
+            <ol id="pub-list" class="pubs">
               <li>Abdul Zeeshan Khan, Muhammad Shafi, Tarek. A. Kandiel*, Abdulaziz A. Al-Saadi*, “Spectroscopic investigation of the solvated MAPbI3 transition to perovskite crystals: A temperature-dependent Raman study”, Physical Chemistry Chemical Physics, Accepted (2026).</li>
               <li>Emmanuel Emmanuel, Sajjad Hussain, Abdulaziz A. Al-Saadi*, “Theoretical insights into transition metal-doped borozene clusters: Structural features, physicochemical and hydrogen evolution reaction properties”, Micro and Nanostructures, 209 (2026) 208458.</li>
               <li>Abdulraheem K. Bello, Abdulaziz A. Al-Saadi*, “CO₂ Reduction to C1 products on metal-free carbon nitride–modified HRG photocatalysts: Insights from first-principles calculations”, Inorganic Chemistry Communications, 181 (2025) 115253.</li>
@@ -172,27 +271,105 @@
         <section id="people" class="section">
           <h2 class="section-title">PEOPLE</h2>
 
-          <div class="content-grid">
-            <div class="content-card">
-              <h3>Current members — Post-Doc</h3>
-              <ul class="bullets">
-                <li>Dr. Sajjad Hussain — Postdoc Fellow (Computational Catalysis)</li>
-                <li>Dr. Muhammad Shafi — Postdoc Fellow (Raman Spectroscopy)</li>
-                <li>Dr. Naveen Kosar — Postdoc Fellow (Computational Chemistry)</li>
-              </ul>
-            </div>
+          <div class="people-grid">
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/sajjad.jpg" alt="Dr. Sajjad Hussain" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Dr. Sajjad Hussain</div>
+                <div class="person-role">Postdoc Fellow — Computational Catalysis</div>
+                <div class="person-thesis">Thesis: Catalysis and DFT-based reaction mechanisms</div>
+                <div class="person-tags"><span class="tag">Catalysis</span><span class="tag">DFT</span><span class="tag">Surface Science</span></div>
+                <div class="person-links"><a href="#" aria-label="Google Scholar">Scholar</a> · <a href="#" aria-label="LinkedIn">LinkedIn</a></div>
+              </div>
+            </article>
 
-            <div class="content-card">
-              <h3>Current members — Graduate students</h3>
-              <ul class="bullets">
-                <li>Atheer Alatawi (Ph.D.) — Nanostructured single-layer vs. multi-layer SERS-based substrates for ultra-low concentration detection of bio-active molecules.</li>
-                <li>Nur Allif Fathurrahman (Ph.D.) — Molecular engineering of boron-carbon-nitride (BCN) nanocages for hydrogen storage and catalytic CO2 conversion.</li>
-                <li>Listya Anggraini — PhD Student</li>
-                <li>Abdulraheem Bello — PhD Student</li>
-                <li>Reem Alharbi — MSc Student</li>
-                <li>Muhammad Umar Halliru — MSc Student</li>
-              </ul>
-            </div>
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/muhammad_shafi.jpg" alt="Dr. Muhammad Shafi" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Dr. Muhammad Shafi</div>
+                <div class="person-role">Postdoc Fellow — Raman Spectroscopy</div>
+                <div class="person-thesis">Thesis: Advanced Raman methods for perovskites and materials</div>
+                <div class="person-tags"><span class="tag">Raman</span><span class="tag">SERS</span><span class="tag">Spectroscopy</span></div>
+                <div class="person-links"><a href="#" aria-label="Google Scholar">Scholar</a> · <a href="#" aria-label="LinkedIn">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/naveen_kosar.jpg" alt="Dr. Naveen Kosar" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Dr. Naveen Kosar</div>
+                <div class="person-role">Postdoc Fellow — Computational Chemistry</div>
+                <div class="person-thesis">Thesis: Computational design and modelling of functional materials</div>
+                <div class="person-tags"><span class="tag">DFT</span><span class="tag">Materials</span><span class="tag">Modeling</span></div>
+                <div class="person-links"><a href="#" aria-label="Google Scholar">Scholar</a> · <a href="#" aria-label="LinkedIn">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/atheer_alatawi.jpg" alt="Atheer Alatawi" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Atheer Alatawi (Ph.D.)</div>
+                <div class="person-role">Graduate student</div>
+                <div class="person-thesis">Nanostructured single-layer vs. multi-layer SERS substrates</div>
+                <div class="person-tags"><span class="tag">SERS</span><span class="tag">Nanostructures</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/nur_allif.jpg" alt="Nur Allif Fathurrahman" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Nur Allif Fathurrahman (Ph.D.)</div>
+                <div class="person-role">Graduate student</div>
+                <div class="person-thesis">Molecular engineering of BCN nanocages for hydrogen storage</div>
+                <div class="person-tags"><span class="tag">Hydrogen</span><span class="tag">BCN</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/listya.jpg" alt="Listya Anggraini" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Listya Anggraini</div>
+                <div class="person-role">PhD Student</div>
+                <div class="person-thesis">Thesis: (TBD)</div>
+                <div class="person-tags"><span class="tag">Computational</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/abdulraheem.jpg" alt="Abdulraheem Bello" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Abdulraheem Bello</div>
+                <div class="person-role">PhD Student</div>
+                <div class="person-thesis">Thesis: Carbon nitride modified graphene for photocatalysis</div>
+                <div class="person-tags"><span class="tag">Photocatalysis</span><span class="tag">DFT</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/reem.jpg" alt="Reem Alharbi" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Reem Alharbi</div>
+                <div class="person-role">MSc Student</div>
+                <div class="person-thesis">Thesis: (TBD)</div>
+                <div class="person-tags"><span class="tag">Spectroscopy</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="profile-photo" src="assets/image/umar.jpg" alt="Muhammad Umar Halliru" loading="lazy">
+              <div class="person-body">
+                <div class="person-name">Muhammad Umar Halliru</div>
+                <div class="person-role">MSc Student</div>
+                <div class="person-thesis">Thesis: (TBD)</div>
+                <div class="person-tags"><span class="tag">Materials</span></div>
+                <div class="person-links"><a href="#">Scholar</a> · <a href="#">LinkedIn</a></div>
+              </div>
+            </article>
           </div>
 
           <div class="doc">
@@ -261,5 +438,15 @@
         <div class="footer__right">Hosted on GitHub Pages</div>
       </div>
     </footer>
+
+    <div id="cookieBanner" class="cookie-banner" role="region" aria-label="Cookie consent" aria-hidden="false">
+      <div class="cookie-inner">
+        <div class="cookie-text">We use minimal analytics to improve the site. By continuing you accept our cookie policy.</div>
+        <div class="cookie-actions">
+          <button id="acceptCookies" class="btn-primary">Accept</button>
+          <button id="declineCookies" class="btn-ghost">Decline</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
