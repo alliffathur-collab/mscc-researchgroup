@@ -83,13 +83,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Publications filters
   (function initPubFilters(){
-    const chips = Array.from(document.querySelectorAll('.filter-chip'));
-    const items = Array.from(document.querySelectorAll('#pub-list li'));
+    const chips = Array.from(document.querySelectorAll('.pub-filters .filter-chip'));
+    const items = Array.from(document.querySelectorAll('.publication-card'));
+    const viewMoreBtn = document.getElementById('pub-view-more');
     if(!chips.length || !items.length) return;
+    
     const FILTERS = { all: [], molecular: ['sers','raman'], computational: ['dft'], materials: ['catalysis','hydrogen','co2'] };
-    function applyFilter(key){ const keywords = FILTERS[key] || []; items.forEach(li => { const text = (li.textContent || '').toLowerCase(); const match = keywords.length === 0 || keywords.some(k => text.includes(k)); li.style.display = match ? 'list-item' : 'none'; }); }
-    chips.forEach(chip=> chip.addEventListener('click', ()=>{ chips.forEach(c=>{ c.classList.remove('on'); c.setAttribute('aria-pressed','false'); }); chip.classList.add('on'); chip.setAttribute('aria-pressed','true'); applyFilter((chip.dataset.filter||'all').toLowerCase()); }));
-    applyFilter('all'); const first = chips.find(c=>c.dataset.filter==='all')||chips[0]; first && first.classList.add('on');
+    const INITIAL_COUNT = 5;
+    let showingAll = false;
+    let currentFilter = 'all';
+    
+    function applyFilter(key){
+      currentFilter = key;
+      const keywords = FILTERS[key] || [];
+      let visibleCount = 0;
+      
+      items.forEach((card, index) => {
+        const cardKeywords = (card.dataset.keywords || '').toLowerCase();
+        const matchesFilter = keywords.length === 0 || keywords.some(k => cardKeywords.includes(k));
+        
+        if(matchesFilter){
+          if(!showingAll && visibleCount >= INITIAL_COUNT){
+            card.style.display = 'none';
+          } else {
+            card.style.display = 'block';
+          }
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Show/hide view more button
+      if(viewMoreBtn){
+        if(visibleCount > INITIAL_COUNT){
+          viewMoreBtn.classList.remove('hidden');
+          viewMoreBtn.textContent = showingAll ? 'View Less' : 'View More';
+        } else {
+          viewMoreBtn.classList.add('hidden');
+        }
+      }
+    }
+    
+    chips.forEach(chip=> {
+      chip.addEventListener('click', ()=>{
+        showingAll = false; // Reset when switching filters
+        chips.forEach(c=>{ 
+          c.classList.remove('on'); 
+          c.setAttribute('aria-pressed','false'); 
+        }); 
+        chip.classList.add('on'); 
+        chip.setAttribute('aria-pressed','true'); 
+        applyFilter((chip.dataset.filter||'all').toLowerCase());
+      });
+    });
+    
+    // View More button handler
+    if(viewMoreBtn){
+      viewMoreBtn.addEventListener('click', ()=>{
+        showingAll = !showingAll;
+        applyFilter(currentFilter);
+      });
+    }
+    
+    applyFilter('all'); 
+    const first = chips.find(c=>c.dataset.filter==='all')||chips[0]; 
+    if(first) {
+      first.classList.add('on');
+      first.setAttribute('aria-pressed','true');
+    }
+  })();
+
+  // People filters
+  (function initPeopleFilters(){
+    const chips = Array.from(document.querySelectorAll('.people-filters .filter-chip'));
+    const personCards = Array.from(document.querySelectorAll('.person-card'));
+    const alumniItems = Array.from(document.querySelectorAll('.alumni-item'));
+    const allItems = [...personCards, ...alumniItems];
+    if(!chips.length || !allItems.length) return;
+    
+    function applyFilter(category){
+      allItems.forEach(item => {
+        const itemCategory = (item.dataset.category || '').toLowerCase();
+        const match = itemCategory === category;
+        item.style.display = match ? '' : 'none';
+      });
+    }
+    
+    chips.forEach(chip=> {
+      chip.addEventListener('click', ()=>{
+        chips.forEach(c=>{ 
+          c.classList.remove('on'); 
+          c.setAttribute('aria-pressed','false'); 
+        }); 
+        chip.classList.add('on'); 
+        chip.setAttribute('aria-pressed','true'); 
+        applyFilter((chip.dataset.filter||'postdoc').toLowerCase());
+      });
+    });
+    
+    // Initialize with first filter (postdoc)
+    const first = chips[0]; 
+    if(first) {
+      first.classList.add('on');
+      first.setAttribute('aria-pressed','true');
+      applyFilter((first.dataset.filter||'postdoc').toLowerCase());
+    }
   })();
 
   // People cards focusability
@@ -159,6 +258,117 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('focusin', stop);
     slider.addEventListener('mouseleave', start);
+  })();
+
+  // Media Gallery functionality
+  (function initMediaGallery(){
+    const galleryTabs = document.querySelectorAll('.gallery-tab');
+    const galleryContents = document.querySelectorAll('.gallery-content');
+    const photoSlides = document.querySelectorAll('.photo-slide');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+    const prevBtn = document.querySelector('.gallery-nav.prev');
+    const nextBtn = document.querySelector('.gallery-nav.next');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-image');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    let currentSlide = 0;
+
+    // Tab switching
+    galleryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.tab;
+        
+        // Update tab states
+        galleryTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-pressed', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-pressed', 'true');
+        
+        // Update content visibility
+        galleryContents.forEach(content => {
+          content.classList.remove('active');
+          if(content.id === `${targetTab}-gallery`) {
+            content.classList.add('active');
+          }
+        });
+      });
+    });
+
+    // Photo slideshow navigation
+    function showSlide(n) {
+      if(!photoSlides.length) return;
+      
+      if(n >= photoSlides.length) currentSlide = 0;
+      else if(n < 0) currentSlide = photoSlides.length - 1;
+      else currentSlide = n;
+      
+      photoSlides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+      
+      galleryDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    if(prevBtn) {
+      prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+    }
+
+    if(nextBtn) {
+      nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+    }
+
+    // Dot navigation
+    galleryDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => showSlide(idx));
+    });
+
+    // Lightbox functionality
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if(img && lightbox && lightboxImg) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.setAttribute('aria-hidden', 'false');
+        }
+      });
+    });
+
+    if(lightboxClose) {
+      lightboxClose.addEventListener('click', () => {
+        if(lightbox) lightbox.setAttribute('aria-hidden', 'true');
+      });
+    }
+
+    if(lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) {
+          lightbox.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      if(lightbox && lightbox.getAttribute('aria-hidden') === 'false') {
+        if(e.key === 'Escape') {
+          lightbox.setAttribute('aria-hidden', 'true');
+        } else if(e.key === 'ArrowLeft') {
+          showSlide(currentSlide - 1);
+        } else if(e.key === 'ArrowRight') {
+          showSlide(currentSlide + 1);
+        }
+      }
+    });
+
+    // Initialize first slide
+    showSlide(0);
   })();
 
 });
