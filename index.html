@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="assets/site.css" />
 
+    <!-- Preload critical images for faster LCP -->
+    <link rel="preload" as="image" href="assets/hero/hero2.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/image/logo-mscc.jpg" />
+
     <!-- Mammoth: client-side DOCX → HTML renderer -->
     <script defer src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
     <script defer src="assets/site.js"></script>
@@ -24,7 +28,7 @@
       <div class="container header-row">
         <a class="brand" href="#home" aria-label="MSCC Research Group Home">
           <div class="brand__logo-wrapper">
-            <img class="brand__logo" src="assets/image/logo-mscc.jpg" alt="MSCC Research Group Logo">
+            <img class="brand__logo" src="assets/image/logo-mscc.jpg" alt="MSCC Research Group Logo" decoding="async">
           </div>
         </a>
 
@@ -75,7 +79,7 @@
           <div class="slider" aria-hidden="false">
             <ul>
               <li class="active">
-                <img src="assets/hero/hero2.jpg" alt="MSCC hero 2" loading="lazy">
+                <img src="assets/hero/hero2.jpg" alt="MSCC hero 2" fetchpriority="high" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">DFT-driven materials discovery</h2>
@@ -86,7 +90,7 @@
               </li>
 
               <li>
-                <img src="assets/hero/hero3.jpg" alt="MSCC hero 3" loading="lazy">
+                <img src="assets/hero/hero3.jpg" alt="MSCC hero 3" loading="lazy" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">Designing catalysts for energy applications</h2>
@@ -97,7 +101,7 @@
               </li>
 
               <li>
-                <img src="assets/hero/hero4.jpg" alt="MSCC hero 4" loading="lazy">
+                <img src="assets/hero/hero4.jpg" alt="MSCC hero 4" loading="lazy" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">High‑sensitivity SERS and vibrational analysis</h2>
@@ -108,7 +112,7 @@
               </li>
 
               <li>
-                <img src="assets/hero/hero5.jpg" alt="MSCC hero 5" loading="lazy">
+                <img src="assets/hero/hero5.jpg" alt="MSCC hero 5" loading="lazy" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">Bridging experiments and computation</h2>
@@ -119,7 +123,7 @@
               </li>
 
               <li>
-                <img src="assets/hero/hero6.jpg" alt="MSCC hero 6" loading="lazy">
+                <img src="assets/hero/hero6.jpg" alt="MSCC hero 6" loading="lazy" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">Theory-guided spectroscopy for materials</h2>
@@ -130,7 +134,7 @@
               </li>
 
               <li>
-                <img src="assets/hero/hero8.jpg" alt="MSCC hero 8" loading="lazy">
+                <img src="assets/hero/hero8.jpg" alt="MSCC hero 8" loading="lazy" decoding="async">
                 <div class="hero-overlay" aria-hidden="true">
                   <div class="hero-overlay__inner">
                     <h2 class="hero-title">Next-generation materials &amp; spectroscopy</h2>
