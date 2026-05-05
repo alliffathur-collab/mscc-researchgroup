@@ -200,16 +200,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }); 
         chip.classList.add('on'); 
         chip.setAttribute('aria-pressed','true'); 
-        applyFilter((chip.dataset.filter||'postdoc').toLowerCase());
+        applyFilter((chip.dataset.filter||'pi').toLowerCase());
       });
     });
     
-    // Initialize with first filter (postdoc)
+    // Initialize with first filter (Principal Investigator)
     const first = chips[0]; 
     if(first) {
       first.classList.add('on');
       first.setAttribute('aria-pressed','true');
-      applyFilter((first.dataset.filter||'postdoc').toLowerCase());
+      applyFilter((first.dataset.filter||'pi').toLowerCase());
     }
   })();
 
