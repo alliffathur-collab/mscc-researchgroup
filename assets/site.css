@@ -2003,11 +2003,32 @@ html[data-theme='light'] .footer__right {
   padding: 80px 0 40px;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.welcome-banner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(124, 77, 255, 0.08) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: welcomePulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes welcomePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
 .welcome-content {
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .welcome-badge-row {
@@ -2016,6 +2037,18 @@ html[data-theme='light'] .footer__right {
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
+  animation: fadeSlideDown 0.8s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .excellence-badge {
@@ -2033,12 +2066,35 @@ html[data-theme='light'] .footer__right {
   text-transform: uppercase;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+  position: relative;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.excellence-badge::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
 }
 
 .excellence-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
-  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.excellence-badge:hover::before {
+  opacity: 1;
 }
 
 .badge-icon-sm {
@@ -2046,6 +2102,12 @@ html[data-theme='light'] .footer__right {
   height: 16px;
   stroke: currentColor;
   fill: currentColor;
+  animation: rotateStar 4s linear infinite;
+}
+
+@keyframes rotateStar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .welcome-title {
@@ -2056,12 +2118,54 @@ html[data-theme='light'] .footer__right {
   letter-spacing: -0.02em;
   margin: 0 0 22px 0;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  animation: fadeZoomIn 1s ease-out 0.2s backwards, gradientShift 6s ease infinite;
+  position: relative;
+}
+
+@keyframes fadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.welcome-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: expandLine 1.2s ease-out 0.6s backwards;
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80px;
+    opacity: 1;
+  }
 }
 
 .welcome-institution {
@@ -2173,7 +2277,7 @@ html[data-theme='light'] .footer__right {
 }
 
 .about-intro__content {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
 }
