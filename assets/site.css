@@ -45,6 +45,11 @@
   --accent: #4dd0e1;
   --accent-2: #7c4dff;
   --glass: rgba(255,255,255,0.05);
+  
+  /* Rendering optimization */
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Light theme overrides */
@@ -508,15 +513,16 @@ html[data-theme='light'] main::after {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1), transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
+  backface-visibility: hidden;
 }
 
 .slider li.active{
   opacity: 1;
   z-index: 2;
-  transform: scale(1);
+  transform: scale(1) translateZ(0);
 }
 
 .slider img{
@@ -525,15 +531,17 @@ html[data-theme='light'] main::after {
   object-fit: cover;
   display: block;
   transition: transform 8s ease-out;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .slider li.active img {
-  animation: heroZoom 8s ease-out forwards;
+  animation: heroZoom 10s ease-out forwards;
 }
 
 @keyframes heroZoom {
-  from { transform: scale(1.1); }
-  to { transform: scale(1); }
+  0% { transform: scale(1.08) translateZ(0); }
+  100% { transform: scale(1) translateZ(0); }
 }
 
 .hero-overlay{
@@ -1033,6 +1041,9 @@ html[data-theme='light']{
   --accent: #006b6b;
   --accent-2: #4b2bff;
   --glass: rgba(9,12,16,0.03);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* In light mode keep hero overlay text light to contrast images */
