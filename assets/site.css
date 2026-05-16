@@ -388,7 +388,7 @@ html[data-theme='light'] main::after {
 
 /* ===== Hero Section - World Class Design ===== */
 .hero{
-  padding: 18px 0 0;
+  padding: 80px 0 0;
   position: relative;
 }
 
@@ -1867,7 +1867,7 @@ html[data-theme='light'] .footer__right {
 
 /* ===== Hero banner ===== */
 .hero {
-  padding: 18px 0 0;
+  padding: 80px 0 0;
 }
 
 .hero-banner {
